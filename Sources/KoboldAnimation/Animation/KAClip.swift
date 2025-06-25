@@ -5,12 +5,12 @@ public class KAClip {
     var startTime: Float
     var endTime: Float
     let looping: Bool
-    let tracks: [TransformTrack]
+    let tracks: [KATransformTrack]
     
     init(
         name: String,
         looping: Bool,
-        tracks: [TransformTrack]
+        tracks: [KATransformTrack]
     ) {
         self.name = name
         self.startTime = 0

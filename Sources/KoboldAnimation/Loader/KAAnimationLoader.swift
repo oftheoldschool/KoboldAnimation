@@ -77,11 +77,11 @@ public class KAAnimationLoader {
 
     private func animationToClip(animation: KAMeshAnimation) -> KAClip {
         let tracks = animation.channels.map { channel in
-            var positionTrack: TrackFVec3? = nil
-            var rotationTrack: TrackFQuat? = nil
-            var scaleTrack: TrackFVec3? = nil
+            var positionTrack: KATrackFVec3? = nil
+            var rotationTrack: KATrackFQuat? = nil
+            var scaleTrack: KATrackFVec3? = nil
 
-            let interpolation: Interpolation = switch channel.interpolation {
+            let interpolation: KAInterpolation = switch channel.interpolation {
             case .constant: .constant
             case .linear: .linear
             case .cubic: .cubic
@@ -89,23 +89,23 @@ public class KAAnimationLoader {
 
             switch channel.type {
             case .translation(let values): positionTrack =
-                TrackFVec3(
+                KATrackFVec3(
                     interpolation: interpolation,
                     time: channel.time,
                     values: values)
             case .scale(let values): scaleTrack =
-                TrackFVec3(
+                KATrackFVec3(
                     interpolation: interpolation,
                     time: channel.time,
                     values: values)
             case .rotation(let values): rotationTrack =
-                TrackFQuat(
+                KATrackFQuat(
                     interpolation: interpolation,
                     time: channel.time,
                     values: values)
             }
 
-            return TransformTrack(
+            return KATransformTrack(
                 joint: channel.id,
                 position: positionTrack,
                 rotation: rotationTrack,
