@@ -1,7 +1,7 @@
 import simd
 
 public struct KATrackFloat {
-    let frames: [FrameFloat]
+    let frames: [KAFrameFloat]
     let interpolation: KAInterpolation
 
     public init(
@@ -30,7 +30,7 @@ public struct KATrackFloat {
                 output = values[baseIndex + offset]
             }
 
-            return FrameFloat(
+            return KAFrameFloat(
                 value: value,
                 input: input,
                 output: output,

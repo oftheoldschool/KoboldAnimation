@@ -1,7 +1,7 @@
 import simd
 
 public struct KATrackFVec3 {
-    let frames: [FrameFVec3]
+    let frames: [KAFrameFVec3]
     let interpolation: KAInterpolation
 
     public init(
@@ -30,7 +30,7 @@ public struct KATrackFVec3 {
                 output = values[baseIndex + offset]
             }
 
-            return FrameFVec3(
+            return KAFrameFVec3(
                 value: value,
                 input: input,
                 output: output,

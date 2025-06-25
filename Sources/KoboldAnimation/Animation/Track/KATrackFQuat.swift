@@ -1,7 +1,7 @@
 import simd
 
 public struct KATrackFQuat {
-    let frames: [FrameFQuat]
+    let frames: [KAFrameFQuat]
     let interpolation: KAInterpolation
 
     public init(
@@ -30,7 +30,7 @@ public struct KATrackFQuat {
                 output = values[baseIndex + offset]
             }
 
-            return FrameFQuat(
+            return KAFrameFQuat(
                 value: value,
                 input: input,
                 output: output,
