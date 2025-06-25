@@ -4,6 +4,14 @@ public struct KATrackFQuat {
     let frames: [KAFrameFQuat]
     let interpolation: KAInterpolation
 
+    public init (
+        frames: [KAFrameFQuat],
+        interpolation: KAInterpolation
+    ) {
+        self.frames = frames
+        self.interpolation = interpolation
+    }
+
     public init(
         interpolation: KAInterpolation,
         time: [Float],

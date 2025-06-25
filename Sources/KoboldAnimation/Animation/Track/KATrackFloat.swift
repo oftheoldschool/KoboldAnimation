@@ -5,6 +5,14 @@ public struct KATrackFloat {
     let interpolation: KAInterpolation
 
     public init(
+        frames: [KAFrameFloat],
+        interpolation: KAInterpolation
+    ) {
+        self.frames = frames
+        self.interpolation = interpolation
+    }
+
+    public init(
         interpolation: KAInterpolation,
         time: [Float],
         values: [Float]

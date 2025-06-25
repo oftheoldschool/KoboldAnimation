@@ -5,6 +5,14 @@ public struct KATrackFVec3 {
     let interpolation: KAInterpolation
 
     public init(
+        frames: [KAFrameFVec3],
+        interpolation: KAInterpolation
+    ) {
+        self.frames = frames
+        self.interpolation = interpolation
+    }
+
+    public init(
         interpolation: KAInterpolation,
         time: [Float],
         values: [SIMD3<Float>]
