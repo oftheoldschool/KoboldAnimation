@@ -22,7 +22,7 @@ public struct KATransformTrack {
                  && scale?.frames.isEmpty ?? true)
     }
 
-    func sample(
+    public func sample(
         referenceTransform: KATransform,
         t: Float,
         looping: Bool
