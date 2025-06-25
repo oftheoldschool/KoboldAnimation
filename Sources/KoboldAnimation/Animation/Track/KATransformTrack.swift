@@ -1,8 +1,8 @@
 public struct KATransformTrack {
     let joint: Int
-    public var position: KATrackFVec3?
-    public let rotation: KATrackFQuat?
-    public let scale: KATrackFVec3?
+    var position: KATrackFVec3?
+    let rotation: KATrackFQuat?
+    let scale: KATrackFVec3?
 
     public init(
         joint: Int,

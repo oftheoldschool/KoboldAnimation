@@ -1,9 +1,9 @@
 import simd
 
 public struct KATransform: Equatable {
-    var position: SIMD3<Float>
-    var rotation: simd_quatf
-    var scale: SIMD3<Float>
+    public var position: SIMD3<Float>
+    public var rotation: simd_quatf
+    public var scale: SIMD3<Float>
 
     public init(
         position: SIMD3<Float> = SIMD3<Float>(repeating: 0),
