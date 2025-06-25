@@ -1,17 +1,17 @@
 class Joint: Equatable {
     let name: String
     var parent: Int
-    var transform: Transform
+    var transform: KATransform
     
-    init(name: String, parent: Int, transform: Transform) {
+    init(name: String, parent: Int, transform: KATransform) {
         self.name = name
         self.parent = parent
         self.transform = transform
     }
     
-    func getGlobalTransform(joints: [Joint]) -> Transform {
+    func getGlobalTransform(joints: [Joint]) -> KATransform {
         var nextParent = parent
-        var result: Transform = self.transform
+        var result: KATransform = self.transform
         while nextParent >= 0 {
             let p = joints[nextParent]
             result = p.transform.combine(result)

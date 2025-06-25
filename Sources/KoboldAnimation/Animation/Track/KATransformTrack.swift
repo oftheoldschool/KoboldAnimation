@@ -23,10 +23,10 @@ public struct KATransformTrack {
     }
 
     func sample(
-        referenceTransform: Transform,
+        referenceTransform: KATransform,
         t: Float,
         looping: Bool
-    ) -> Transform {
+    ) -> KATransform {
         var result = referenceTransform
         if let p = position, p.frames.count > 1 {
             result.position = p.sample(t: t, looping: looping)

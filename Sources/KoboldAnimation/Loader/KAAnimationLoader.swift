@@ -29,7 +29,7 @@ public class KAAnimationLoader {
                 Joint(
                     name: node.name,
                     parent: node.parentId,
-                    transform: Transform(
+                    transform: KATransform(
                         position: node.translation,
                         rotation: node.rotation,
                         scale: node.scale))
@@ -41,7 +41,7 @@ public class KAAnimationLoader {
         skins: [KAMeshSkin],
         restPose: KAPose
     ) -> KAPose {
-        var worldBindPose: [Transform] = restPose.joints.map { joint in
+        var worldBindPose: [KATransform] = restPose.joints.map { joint in
             joint.getGlobalTransform(joints: restPose.joints)
         }
 
@@ -50,7 +50,7 @@ public class KAAnimationLoader {
             (0..<skin.joints.count).forEach { i in
                 let inverseBindMatrix = skin.inverseBindMatrices[i]
                 let bindMatrix = inverseBindMatrix.inverse
-                let bindTransform = Transform(fromMatrix: bindMatrix)
+                let bindTransform = KATransform(fromMatrix: bindMatrix)
                 worldBindPose[skin.joints[i].id] = bindTransform
                 skeletonToNode[i] = skin.joints[i].id
             }
