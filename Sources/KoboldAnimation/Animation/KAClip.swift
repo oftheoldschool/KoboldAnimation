@@ -21,7 +21,11 @@ public class KAClip {
         recalculateDuration()
     }
 
-    public func sample(pose: KAPose, inTime: Float) -> Float {
+    public func sample(
+        pose: KAPose,
+        inTime: Float,
+        looping: Bool? = nil
+    ) -> Float {
         let duration = endTime - startTime
         if duration == .zero {
             return .zero
@@ -32,7 +36,7 @@ public class KAClip {
             let animated = track.sample(
                 referenceTransform: pose.joints[track.joint].transform,
                 t: outTime,
-                looping: looping)
+                looping: looping ?? self.looping)
             pose.joints[track.joint].transform = animated
         }
         return outTime
