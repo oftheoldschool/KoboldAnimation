@@ -24,19 +24,21 @@ public class KAClip {
     public func sample(
         pose: KAPose,
         inTime: Float,
-        looping: Bool? = nil
+        overrideClipLooping: Bool? = nil
     ) -> Float {
         let duration = endTime - startTime
         if duration == .zero {
             return .zero
         }
 
-        let outTime = adjustTimeToFitRange(inTime: inTime)
+        let animationWillLoop = overrideClipLooping ?? self.looping
+
+        let outTime = adjustTimeToFitRange(inTime: inTime, animationWillLoop: animationWillLoop)
         for track in tracks {
             let animated = track.sample(
                 referenceTransform: pose.joints[track.joint].transform,
                 t: outTime,
-                looping: looping ?? self.looping)
+                looping: animationWillLoop)
             pose.joints[track.joint].transform = animated
         }
         return outTime
@@ -65,9 +67,12 @@ public class KAClip {
         }
     }
     
-    private func adjustTimeToFitRange(inTime: Float) -> Float {
+    private func adjustTimeToFitRange(
+        inTime: Float,
+        animationWillLoop: Bool
+    ) -> Float {
         var outTime: Float = inTime
-        if looping {
+        if animationWillLoop {
             let duration = endTime - startTime
             if duration <= 0 { 
                 outTime = 0
