@@ -59,10 +59,10 @@ public struct KATrackFVec3 {
     }
 
     func sample(t: Float, looping: Bool) -> SIMD3<Float> {
-        switch interpolation {
-        case .constant: return sampleConstant(t: t, looping: looping)
-        case .linear: return sampleLinear(t: t, looping: looping)
-        case .cubic: return sampleCubic(t: t, looping: looping)
+        return switch interpolation {
+        case .constant: sampleConstant(t: t, looping: looping)
+        case .linear: sampleLinear(t: t, looping: looping)
+        case .cubic: sampleCubic(t: t, looping: looping)
         }
     }
 
