@@ -36,6 +36,10 @@ public class AnimationState {
         animate(0)
     }
 
+    public func currentClip() -> String {
+        return currentClipName
+    }
+
     public func resetAnimation() {
         changeClip(defaultClip)
     }
