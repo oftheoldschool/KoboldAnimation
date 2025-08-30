@@ -1,5 +1,6 @@
 public class AnimationState {
     let defaultClip: String
+    let defaultOffset: Float
     let playbackSpeed: Float
     let clips: [String: KAClip]
     public let skeleton: KASkeleton
@@ -12,9 +13,11 @@ public class AnimationState {
         skeleton: KASkeleton,
         clips: [String: KAClip],
         playbackSpeed: Float = 1,
-        defaultClip: String? = nil
+        defaultClip: String? = nil,
+        defaultOffset: Float = 0
     ) {
         self.defaultClip = defaultClip ?? clips.keys.sorted().first!
+        self.defaultOffset = defaultOffset
         self.skeleton = skeleton
         self.clips = clips
         self.pose = skeleton.bindPose.clone()
@@ -30,9 +33,12 @@ public class AnimationState {
         }
     }
 
-    public func changeClip(_ clipName: String) {
+    public func changeClip(
+        clipName: String,
+        startOffset: Float = 0
+    ) {
         currentClipName = clipName
-        animationTime = 0
+        animationTime = startOffset
         animate(0)
     }
 
@@ -41,6 +47,6 @@ public class AnimationState {
     }
 
     public func resetAnimation() {
-        changeClip(defaultClip)
+        changeClip(clipName: defaultClip, startOffset: defaultOffset)
     }
 }
