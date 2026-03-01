@@ -5,35 +5,7 @@ extension SIMD4 {
 }
 
 extension SIMD4 where Scalar: SignedNumeric {
-    static var xPositive: Self {
-        Self(x: 1, y: 0, z: 0, w: 0)
-    }
-
-    static var yPositive: Self {
-        Self(x: 0, y: 1, z: 0, w: 0)
-    }
-
-    static var zPositive: Self {
-        Self(x: 0, y: 0, z: 1, w: 0)
-    }
-
     static var wPositive: Self {
         Self(x: 0, y: 0, z: 0, w: 1)
-    }
-
-    static var xNegative: Self {
-        Self(x: -1, y: 0, z: 0, w: 0)
-    }
-
-    static var yNegative: Self {
-        Self(x: 0, y: -1, z: 0, w: 0)
-    }
-
-    static var zNegative: Self {
-        Self(x: 0, y: 0, z: -1, w: 0)
-    }
-
-    static var wNegative: Self {
-        Self(x: 0, y: 0, z: 0, w: -1)
     }
 }
